@@ -2,12 +2,6 @@
 - name: creating container
   hosts: webservers
   become: true
-  tasks:
-   - name: stopping the previous container
-     shell: docker stop app
-   - name: deleting the old container
-     shell: docker rm app
-   - name: removing old image
-     shell: docker rmi -f sasireddy/webtemplate 
+  tasks: 
    - name: create docker container
      shell: docker run -d --name app -p 9009:80 sasireddy/webtemplate
