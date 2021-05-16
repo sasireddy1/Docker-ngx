@@ -4,10 +4,7 @@
   become: true
   tasks:
    - name: Build Docker image from Dockerfile
-     docker_image:
-       name: sasireddy/webtemplate
-       path: sasireddy1/Docker-ngx
-       state: build 
+     shell: docker image build -t sasireddy1/Docker-ngx
    - name : login into docker
      shell: docker login -u sasireddy -p Sasidhar@12
    - name: pushing docker image to docker hub
