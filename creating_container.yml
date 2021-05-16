@@ -6,7 +6,7 @@
    - name: Build Docker image from Dockerfile
      docker_image:
        name: sasireddy/webtemplate
-       path: Dockerfile
+       path: sasireddy1/Docker-ngx
        state: build 
    - name : login into docker
      shell: docker login -u sasireddy -p Sasidhar@12
