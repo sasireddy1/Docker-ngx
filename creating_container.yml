@@ -11,6 +11,10 @@
      shell: docker push sasireddy/webtemplate
    - name: removing image locally
      shell: docker rmi -f sasireddy/webtemplate
+   - name: removing old container
+     shell: docker container rm -f $(docker container ls -a -q)
+   - name: removing old images
+     shell: docker image rm -f $(docker image ls -a -q)  
    - name: create  new docker container
      shell: docker run -d --name app -p 8079:80 sasireddy/webtemplate
 
