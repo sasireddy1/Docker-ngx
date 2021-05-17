@@ -3,9 +3,14 @@
   hosts: webservers
   become: true
   tasks:
-   - name: removing old containers
-     shell: docker container rm -f $(docker container ls -a -q)
-   - name: removing old images
-     shell: docker image rm -f $(docker image ls -a -q)
+   - name: building image
+     shell: docker image build -t sasireddy/webtemplate /home/ubuntu
+   - name : login into docker
+     shell: docker login -u sasireddy -p Sasidhar@12
+   - name: pushing docker image to docker hub
+     shell: docker push sasireddy/webtemplate
+   - name: removing image locally
+     shell: docker rmi -f sasireddy/webtemplate
    - name: create  new docker container
      shell: docker run -d --name app -p 8079:80 sasireddy/webtemplate
+
