@@ -3,6 +3,10 @@
   hosts: webservers
   become: true
   tasks:
+   - name: removing the old containers
+     shell: docker container rm -f $(docker container ls -a -q)
+   - name: removing old images
+     shell: docker image rm -f $(docker image ls -a -q)
    - name: create  new docker container
      shell: docker run -d --name app -p 8079:80 sasireddy/webtemplate
 
